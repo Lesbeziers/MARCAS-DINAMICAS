@@ -47,7 +47,7 @@ body {
 
 .cabecera {
   flex: 0 0 auto;
-  height: 55px;
+  height: 68px;
   background: var(--negro);
   border-bottom: 1px solid var(--linea);
   display: grid;
@@ -55,8 +55,8 @@ body {
 }
 
 .cabecera img {
-  width: 420px;
-  max-width: 62%;
+  width: 515px;
+  max-width: 68%;
   height: auto;
 }
 
