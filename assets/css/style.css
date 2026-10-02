@@ -1,0 +1,521 @@
+/* =============================================================
+   MARCAS DINÁMICAS 1.0
+   Proporciones tomadas sobre un lienzo de referencia 1400 × 750.
+   ============================================================= */
+
+:root {
+  --negro:          #000000;
+  --fondo:          #111111;
+  --linea:          #3d3d3d;   /* filetes que separan las zonas */
+  --caja:           #1a1a1a;
+
+  --naranja:        #e9a13b;
+  --naranja-suave:  #f2dcae;
+  --verde:          #7fbf84;
+
+  --texto:          #ffffff;
+  --texto-tenue:    #8e8e8e;
+
+  --btn-gris:       #333333;
+  --btn-gris-alto:  #454545;
+
+  --radio:          4px;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: var(--fondo);
+  color: var(--texto);
+  font-family: 'Apercu', system-ui, -apple-system, sans-serif;
+  font-weight: 400;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+[hidden] { display: none !important; }
+
+
+/* ============================ CABECERA ============================ */
+
+.cabecera {
+  flex: 0 0 auto;
+  height: 55px;
+  background: var(--negro);
+  border-bottom: 1px solid var(--linea);
+  display: grid;
+  place-items: center;
+}
+
+.cabecera img {
+  width: 420px;
+  max-width: 62%;
+  height: auto;
+}
+
+
+/* ============================= LANDING ============================= */
+
+.landing {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.dropzone {
+  width: min(340px, 70vw);
+  aspect-ratio: 1200 / 1800;
+  max-height: 100%;
+  border: 2px dashed var(--naranja);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: background .15s ease, border-color .15s ease, transform .15s ease;
+}
+
+.dropzone:hover,
+.dropzone:focus-visible {
+  background: rgba(233, 161, 59, .06);
+  outline: none;
+}
+
+.dropzone.encima {
+  background: rgba(233, 161, 59, .14);
+  border-color: var(--naranja-suave);
+  transform: scale(1.015);
+}
+
+.dz-titulo {
+  margin: 0;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.dz-sub {
+  margin: 0;
+  font-size: 12px;
+  color: var(--texto-tenue);
+}
+
+
+/* ============================== BARRA ============================== */
+
+.trabajo {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.barra {
+  flex: 0 0 auto;
+  height: 34px;
+  background: var(--negro);
+  border-bottom: 1px solid var(--linea);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 18px;
+}
+
+.barra-grupo {
+  display: flex;
+  gap: 7px;
+}
+
+.btn {
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 10px;
+  letter-spacing: .07em;
+  color: var(--texto);
+  background: var(--btn-gris);
+  border: none;
+  border-radius: 3px;
+  padding: 6px 12px 5px;
+  cursor: pointer;
+  transition: background .12s ease, opacity .12s ease;
+}
+
+.btn:hover:not(:disabled) { background: var(--btn-gris-alto); }
+
+.btn:disabled {
+  opacity: .35;
+  cursor: default;
+}
+
+.btn-exportar {
+  background: var(--verde);
+  color: #0e2a12;
+}
+
+.btn-exportar:hover:not(:disabled) { background: #96d09a; }
+
+.btn-peligro {
+  background: var(--naranja);
+  color: #2a1a04;
+}
+
+.btn-peligro:hover { background: #f3b45c; }
+
+
+/* ============================== CUERPO ============================== */
+
+.cuerpo {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+}
+
+
+/* ============================== LATERAL ============================== */
+
+.lateral {
+  flex: 0 0 320px;
+  width: 320px;
+  background: var(--negro);
+  border-right: 1px solid var(--linea);
+  padding: 20px 0 28px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.titulo-seccion {
+  margin: 0 0 12px;
+  padding: 0 20px;
+  font-size: 17px;
+  font-weight: 400;
+  letter-spacing: .02em;
+  color: var(--naranja);
+}
+
+.titulo-seccion + .lista,
+.select-caja + .titulo-seccion { margin-top: 26px; }
+
+/* -- desplegables -- */
+
+.select-caja {
+  position: relative;
+  margin: 0 18px;
+}
+
+.select-caja::after {
+  content: '';
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  width: 9px;
+  height: 9px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: translateY(-70%) rotate(45deg);
+  pointer-events: none;
+  color: var(--naranja);
+}
+
+.select {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 100%;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 9.5px;
+  letter-spacing: .07em;
+  color: var(--naranja);
+  background: #1c1c1c;
+  border: 1px solid #3a3a3a;
+  border-radius: var(--radio);
+  padding: 7px 30px 6px 12px;
+  cursor: pointer;
+}
+
+.select:focus-visible { outline: 1px solid var(--naranja); }
+
+/* -- lista de carátulas -- */
+
+.lista {
+  list-style: none;
+  margin: 0;
+  padding: 0 18px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 7px;
+  padding: 7px 8px;
+  margin-bottom: 4px;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  color: inherit;
+  transition: background .12s ease;
+}
+
+.item:hover { background: #121212; }
+
+.item.activo {
+  background: #141414;
+  border-color: var(--naranja);
+}
+
+.item-thumb {
+  flex: 0 0 auto;
+  width: 58px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  overflow: hidden;
+}
+
+.item-thumb img {
+  height: 100%;
+  width: auto;
+  max-width: 100%;
+  object-fit: cover;
+  border-radius: 2px;
+  display: block;
+}
+
+/* Si la carátula tiene los dos formatos, el thumb los muestra
+   juntos y con el peso a la izquierda. */
+.item-thumb.doble img:first-child { flex: 0 0 auto; }
+.item-thumb.doble img:last-child  { flex: 1 1 auto; min-width: 0; object-fit: cover; }
+
+.item-datos {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.item-nombre {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .03em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.item-medidas {
+  font-size: 9px;
+  color: var(--texto-tenue);
+  margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.item-aviso {
+  font-size: 8.5px;
+  color: var(--naranja);
+  opacity: .75;
+  margin-top: 2px;
+}
+
+.badge {
+  flex: 0 0 auto;
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: .07em;
+  padding: 3px 7px 2px;
+  border-radius: 3px;
+  border: 1px solid currentColor;
+}
+
+.badge.ok    { color: var(--verde); }
+.badge.falta { color: var(--naranja); }
+
+
+/* ============================= VIEWPORT ============================= */
+
+.viewport {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 0 27px 26px;   /* el aire superior lo pone .viewport-control */
+}
+
+/* Mismo aire por arriba y por abajo del control. El min-height mantiene
+   la altura constante tanto con el desplegable como con el rótulo, para
+   que los lienzos no se muevan al cambiar de modo. */
+.viewport-control {
+  flex: 0 0 auto;
+  min-height: 68px;
+  padding: 20px 0;
+  display: grid;
+  place-items: center;
+}
+
+.viewport-control .select-caja {
+  margin: 0;
+  width: 290px;
+}
+
+.rotulo-marca {
+  margin: 0;
+  font-size: 23px;
+  font-weight: 400;
+  letter-spacing: .05em;
+  color: var(--naranja);
+}
+
+/* -- los dos lienzos --
+   Ambos comparten un único factor de escala, de modo que su tamaño
+   relativo en pantalla es el real: el vertical (1200×1800) y el
+   horizontal (1920×1080) se ven como se verían impresos a la par.
+
+   Despejando el ancho total:
+     ancho = h·(1200/1800) + hueco + h·(1080/1800)·(1920/1080)
+           = h·1,7333 + hueco
+   Con hueco = 3% del ancho  ->  h = 0,97·ancho / 1,7333 = 55,96% */
+
+.lienzos {
+  flex: 1 1 auto;
+  min-height: 0;
+  container-type: size;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 3cqw;
+  --h: min(100cqh, 55.96cqw);
+}
+
+.lienzo {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  background: var(--caja);
+}
+
+.lienzo--v {
+  height: var(--h);
+  aspect-ratio: 1200 / 1800;
+}
+
+.lienzo--h {
+  height: calc(var(--h) * 1080 / 1800);
+  aspect-ratio: 1920 / 1080;
+}
+
+.lienzo-arte {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* El logo va a hueso contra la esquina superior derecha: el aire
+   necesario ya viene dentro del propio SVG. El ancho se expresa en
+   % del lienzo, que es exactamente la regla de escala del spec. */
+.lienzo-logo {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: auto;
+  display: block;
+}
+
+/* Hueco del formato que no se ha cargado */
+.lienzo.vacio {
+  background: var(--caja);
+  border: 1px solid #272727;
+  display: grid;
+  place-items: center;
+}
+
+.lienzo-hueco {
+  margin: 0;
+  font-size: 11px;
+  color: #4a4a4a;
+  letter-spacing: .04em;
+}
+
+
+/* ======================== MODAL Y PROGRESO ======================== */
+
+.velo {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, .72);
+  display: grid;
+  place-items: center;
+  z-index: 50;
+}
+
+.modal-caja {
+  width: min(420px, 86vw);
+  background: #161616;
+  border: 1px solid var(--linea);
+  border-radius: 8px;
+  padding: 24px 24px 20px;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, .6);
+}
+
+.modal-texto {
+  margin: 0 0 20px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--texto);
+  white-space: pre-line;   /* los avisos de exportación listan archivos */
+  max-height: 46vh;
+  overflow-y: auto;
+}
+
+.modal-botones {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.barra-progreso {
+  height: 4px;
+  background: #2a2a2a;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.barra-progreso-relleno {
+  height: 100%;
+  width: 0;
+  background: var(--verde);
+  transition: width .2s ease;
+}
+
+
+/* ============================ RESPONSIVE ============================ */
+
+@media (max-width: 1100px) {
+  .lateral { flex-basis: 260px; width: 260px; }
+  .viewport { padding: 16px 18px 20px; }
+}
+
+@media (max-width: 820px) {
+  .cuerpo { flex-direction: column; }
+  .lateral {
+    flex: 0 0 auto;
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid var(--linea);
+    max-height: 38%;
+  }
+  .viewport-control .select-caja { width: 100%; max-width: 290px; }
+}

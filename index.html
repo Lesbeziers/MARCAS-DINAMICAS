@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Marcas Dinámicas · Movistar Plus+</title>
+<link rel="stylesheet" href="assets/css/fonts.css">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header class="cabecera">
+  <img src="assets/img/cabecera_marcas_dinamicas.svg" alt="Marcas Dinámicas · Movistar Plus+">
+</header>
+
+<!-- ======================= PANTALLA 1 · LANDING ======================= -->
+<main class="landing" id="landing">
+  <div class="dropzone" id="dropzone" role="button" tabindex="0"
+       aria-label="Arrastra aquí las imágenes o haz click para seleccionarlas">
+    <p class="dz-titulo">Arrastra aquí las imágenes</p>
+    <p class="dz-sub">o haz click para seleccionarlas</p>
+  </div>
+  <input type="file" id="input-archivos" accept="image/*" multiple hidden>
+</main>
+
+<!-- ==================== PANTALLA 2 · ÁREA DE TRABAJO =================== -->
+<div class="trabajo" id="trabajo" hidden>
+
+  <nav class="barra">
+    <div class="barra-grupo">
+      <button type="button" class="btn" id="btn-portada">PORTADA</button>
+      <button type="button" class="btn" id="btn-reiniciar">REINICIAR</button>
+      <button type="button" class="btn btn-exportar" id="btn-exportar">EXPORTAR</button>
+    </div>
+    <div class="barra-grupo">
+      <button type="button" class="btn" id="btn-anterior" title="Anterior (flecha izquierda)">ANTERIOR</button>
+      <button type="button" class="btn" id="btn-siguiente" title="Siguiente (flecha derecha)">SIGUIENTE</button>
+    </div>
+  </nav>
+
+  <div class="cuerpo">
+
+    <aside class="lateral">
+      <h2 class="titulo-seccion">SELECTOR DE MARCAS</h2>
+      <div class="select-caja">
+        <select class="select" id="selector-modo" aria-label="Modo de aplicación de marcas"></select>
+      </div>
+
+      <h2 class="titulo-seccion">IMÁGENES</h2>
+      <ul class="lista" id="lista"></ul>
+    </aside>
+
+    <section class="viewport">
+      <div class="viewport-control">
+        <!-- Modo VARIAS: desplegable por carátula -->
+        <div class="select-caja" id="caja-marca">
+          <select class="select" id="selector-marca" aria-label="Marca de esta carátula"></select>
+        </div>
+        <!-- Modo partner: rótulo fijo -->
+        <p class="rotulo-marca" id="rotulo-marca" hidden></p>
+      </div>
+
+      <div class="lienzos" id="lienzos">
+        <figure class="lienzo lienzo--v" id="lienzo-v"></figure>
+        <figure class="lienzo lienzo--h" id="lienzo-h"></figure>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<!-- ============================ MODAL ============================ -->
+<div class="velo" id="modal" hidden>
+  <div class="modal-caja" role="alertdialog" aria-modal="true" aria-labelledby="modal-texto">
+    <p class="modal-texto" id="modal-texto"></p>
+    <div class="modal-botones">
+      <button type="button" class="btn" id="modal-cancelar">CANCELAR</button>
+      <button type="button" class="btn btn-peligro" id="modal-aceptar">CONTINUAR</button>
+    </div>
+  </div>
+</div>
+
+<!-- ========================= PROGRESO EXPORT ========================= -->
+<div class="velo" id="progreso" hidden>
+  <div class="modal-caja">
+    <p class="modal-texto" id="progreso-texto">Exportando…</p>
+    <div class="barra-progreso"><div class="barra-progreso-relleno" id="progreso-relleno"></div></div>
+  </div>
+</div>
+
+<script src="assets/js/jszip.min.js"></script>
+<script src="assets/js/marcas.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>

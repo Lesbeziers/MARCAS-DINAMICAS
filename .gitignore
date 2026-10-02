@@ -1,0 +1,6 @@
+# Metadatos que macOS crea al escribir en volúmenes que no son HFS
+._*
+.DS_Store
+
+# Configuración local de previsualización durante el desarrollo
+.claude/
